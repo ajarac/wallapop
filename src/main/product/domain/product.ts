@@ -11,6 +11,7 @@ export interface ProductArgs {
     price: ProductPrice;
     email: ProductEmail;
     image: ProductImage;
+    favorite: ProductFavorite;
 }
 
 export class Product {
@@ -27,7 +28,7 @@ export class Product {
         this._price = productArgs.price;
         this._email = productArgs.email;
         this._image = productArgs.image;
-        this._favorite = false;
+        this._favorite = productArgs.favorite;
     }
 
     get title(): ProductTitle {
