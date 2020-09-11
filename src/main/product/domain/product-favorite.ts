@@ -1,0 +1,1 @@
+export type ProductFavorite = boolean;
