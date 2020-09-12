@@ -16,7 +16,8 @@
             "@core/*": ["src/core/*"],
             "@product/*": ["src/main/product/*"],
             "@env/*": ["src/environments/*"],
-            "@common/*": ["src/main/common/*"]
+            "@common/*": ["src/main/common/*"],
+            "@tests/*": ["src/tests/*"]
         }
     },
     "angularCompilerOptions": {

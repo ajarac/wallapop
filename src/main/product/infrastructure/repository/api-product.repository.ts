@@ -10,7 +10,7 @@ import { ApiProductResponse } from './api-product.response';
 import { ProductMapper } from './product.mapper';
 
 @Injectable()
-export class ApiGetProductsRepository extends ApiRepository implements ProductRepository {
+export class ApiProductRepository extends ApiRepository implements ProductRepository {
     private baseUrl = 'items.json';
 
     constructor(injector: Injector) {

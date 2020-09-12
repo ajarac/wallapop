@@ -10,7 +10,7 @@ import { IProductState } from '@product/application/store/product.state';
 import { Product } from '@product/domain/product';
 import { PRODUCT_REPOSITORY } from '@product/domain/product.repository';
 
-import { ProductListMother } from '../product-list.mother';
+import { ProductListMother } from './../../domain/product-list.mother';
 
 describe('[PRODUCT] Product State', () => {
     let store: Store;
