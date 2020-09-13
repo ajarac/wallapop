@@ -1,5 +1,11 @@
-<mat-card>
-    <mat-card-content fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="1rem">
+<mat-card [class.complete]="!compact">
+    <ng-container *ngIf="compact">
+        <mat-card-header>
+            <mat-card-title>{{ product.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="product.image" alt="" />
+    </ng-container>
+    <mat-card-content *ngIf="!compact" fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="1rem">
         <div fxFlex="33">
             <img [src]="product.image" alt="" />
         </div>
@@ -16,4 +22,9 @@
             </button>
         </div>
     </mat-card-content>
+    <mat-card-actions *ngIf="compact">
+        <button mat-icon-button color="accent">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
 </mat-card>

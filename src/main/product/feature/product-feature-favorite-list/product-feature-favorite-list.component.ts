@@ -6,30 +6,18 @@ import { Product } from '@product/domain/product';
 import { ListConfig } from '@shared/models/list.config';
 
 @Component({
-    selector: 'app-product-list',
-    templateUrl: 'product-list.component.html',
-    styleUrls: ['./product-list.component.scss'],
+    selector: 'app-product-feature-favorite-list',
+    templateUrl: 'product-feature-favorite-list.component.html',
+    styleUrls: ['./product-feature-favorite-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductListComponent {
-    products$: Observable<Product[]> = this.productService.list$;
+export class ProductFeatureFavoriteListComponent {
+    products$: Observable<Product[]> = this.productService.listFavorite$;
 
     listConfig: ListConfig<Product> = [
         {
             title: 'Title',
             property: 'title',
-        },
-        {
-            title: 'Description',
-            property: 'description',
-        },
-        {
-            title: 'Price',
-            property: 'price',
-        },
-        {
-            title: 'Email',
-            property: 'email',
         },
     ];
 

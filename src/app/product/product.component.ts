@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { ProductFavoriteDialogComponent } from './product-favorite/product-favorite-dialog.component';
 
 @Component({
     selector: 'app-product',
@@ -6,4 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./product.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductComponent {}
+export class ProductComponent {
+    constructor(public dialog: MatDialog) {}
+
+    openFavorite(): void {
+        this.dialog.open(ProductFavoriteDialogComponent);
+    }
+}

@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { ProductService } from '@product/application/service/product.service';
 import { Product } from '@product/domain/product';
 
@@ -14,5 +14,11 @@ import { Product } from '@product/domain/product';
 export class ProductTitleComponent {
     countFavorites$: Observable<number> = this.productService.listFavorite$.pipe(map((list: Product[]) => list.length));
 
+    @Output() favorite: EventEmitter<void> = new EventEmitter<void>();
+
     constructor(private productService: ProductService) {}
+
+    clickFavorite(): void {
+        this.favorite.emit();
+    }
 }

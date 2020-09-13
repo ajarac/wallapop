@@ -1,0 +1,8 @@
+<app-dynamic-list [list]="products$ | async" [trackFn]="trackFn" [listConfig]="listConfig">
+    <app-product-item-card
+        *template="let product"
+        [product]="product"
+        (changeFavorite)="changeFavorite($event)"
+        [compact]="false"
+    ></app-product-item-card>
+</app-dynamic-list>

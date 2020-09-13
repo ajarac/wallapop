@@ -6,13 +6,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { Product } from '@product/domain/product';
 
 @Component({
-    selector: 'app-product-list-item',
-    templateUrl: 'product-list-item.component.html',
-    styleUrls: ['./product-list-item.component.scss'],
+    selector: 'app-product-item-card',
+    templateUrl: 'product-item-card.component.html',
+    styleUrls: ['./product-item-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductListItemComponent {
+export class ProductItemCardComponent {
     @Input() product: Product;
+    @Input() compact = false;
     @Output() changeFavorite: EventEmitter<Product> = new EventEmitter<Product>();
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches));
