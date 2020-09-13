@@ -13,6 +13,8 @@ export class ProductComponent {
     constructor(public dialog: MatDialog) {}
 
     openFavorite(): void {
-        this.dialog.open(ProductFavoriteDialogComponent);
+        this.dialog.open(ProductFavoriteDialogComponent, {
+            width: 'auto',
+        });
     }
 }

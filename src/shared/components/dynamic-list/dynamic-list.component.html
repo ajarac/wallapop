@@ -1,11 +1,11 @@
-<div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between center" fxLayoutGap="5rem">
-    <app-custom-field fxFlex="50" [label]="'shared.filter.input.label' | translate">
+<div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between stretch" fxLayoutGap.gt-xs="5rem">
+    <app-custom-field [label]="'shared.filter.input.label' | translate">
         <input matInput (keyup)="applyFilter($event)" [placeholder]="'shared.filter.input.placeholder' | translate" />
     </app-custom-field>
 
-    <app-custom-field label="order by">
+    <app-custom-field [label]="'shared.filter.selector.label' | translate">
         <mat-select (selectionChange)="onChangeSort($event)">
-            <mat-option selected [value]="null">None</mat-option>
+            <mat-option selected [value]="null">{{ 'shared.filter.selector.none' | translate }}</mat-option>
             <mat-option *ngFor="let config of listConfig" [value]="config.property">
                 {{ config.title }}
             </mat-option>
@@ -14,5 +14,13 @@
 </div>
 
 <div fxLayout="column" fxLayoutGap="1rem">
-    <ng-template ngFor let-item [ngForOf]="dataSource.filteredData" [ngForTrackBy]="trackFn" [ngForTemplate]="templateItem"></ng-template>
+    <ng-template
+        ngFor
+        let-item
+        [ngForOf]="dataSource.connect() | async"
+        [ngForTrackBy]="trackFn"
+        [ngForTemplate]="templateItem"
+    ></ng-template>
 </div>
+<br />
+<mat-paginator class="mat-elevation-z2" [pageSize]="5" [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>

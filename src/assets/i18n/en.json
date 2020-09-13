@@ -8,10 +8,17 @@
     },
     "product": {
         "title": "Products",
-        "my_favorites": "My Favorites"
+        "my_favorites": "My Favorites",
+        "favorite_dialog": {
+            "title": "My Favorites Products"
+        }
     },
     "shared": {
         "filter": {
+            "selector": {
+                "label": "Order By",
+                "none": "None"
+            },
             "input": {
                 "label": "Filter",
                 "placeholder": "Into to filter list"
