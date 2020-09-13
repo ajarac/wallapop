@@ -24,8 +24,8 @@ export class ProductFeatureFavoriteListComponent {
     constructor(private productService: ProductService) {}
 
     changeFavorite(product: Product): void {
-        const isFavorite = !product.favorite;
-        this.productService.changeFavorite(product, isFavorite);
+        console.log('changeFavorite', product);
+        this.productService.changeFavorite(product, false);
     }
 
     trackFn(product: Product): string {

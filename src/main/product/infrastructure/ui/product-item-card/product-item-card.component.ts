@@ -13,7 +13,6 @@ import { Product } from '@product/domain/product';
 })
 export class ProductItemCardComponent {
     @Input() product: Product;
-    @Input() compact = false;
     @Output() changeFavorite: EventEmitter<Product> = new EventEmitter<Product>();
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches));

@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="product.image" alt="" />
+    <mat-card-actions>
+        <button mat-icon-button color="accent" (click)="clickDelete()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
