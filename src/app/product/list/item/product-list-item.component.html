@@ -1,3 +1,17 @@
 <mat-card>
-    <mat-card-title>{{ product.title }}</mat-card-title>
+    <mat-card-content fxLayout="row" fxLayoutGap="1rem">
+        <img [src]="product.image" alt="" />
+        <div fxLayout="column" class="content" fxLayoutAlign="space-between start" fxLayoutGap="1rem">
+            <div>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <h2>{{ product.title }}</h2>
+                    <span class="price">{{ product.price }} €</span>
+                </div>
+                <p>{{ product.description }}</p>
+            </div>
+            <button mat-icon-button [color]="product.favorite ? 'accent' : 'none'" (click)="toggleFavorite()">
+                <mat-icon>{{ product.favorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+            </button>
+        </div>
+    </mat-card-content>
 </mat-card>

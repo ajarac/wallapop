@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '@product/domain/product';
 
 @Component({
@@ -9,4 +9,9 @@ import { Product } from '@product/domain/product';
 })
 export class ProductListItemComponent {
     @Input() product: Product;
+    @Output() changeFavorite: EventEmitter<Product> = new EventEmitter<Product>();
+
+    toggleFavorite(): void {
+        this.changeFavorite.emit(this.product);
+    }
 }

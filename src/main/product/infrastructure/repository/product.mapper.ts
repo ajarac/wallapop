@@ -12,7 +12,7 @@ export class ProductMapper {
             description: apiProduct.description,
             price: apiProduct.price,
             email: apiProduct.email,
-            image: apiProduct.email,
+            image: apiProduct.image,
             favorite: false,
         };
     }
