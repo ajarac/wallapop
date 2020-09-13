@@ -1,3 +1,6 @@
 <app-custom-field>
     <input matInput (keyup)="applyFilter($event)" />
 </app-custom-field>
+<div fxLayout="column" fxLayoutGap="1rem">
+    <ng-template ngFor let-item [ngForOf]="dataSource.filteredData" [ngForTemplate]="templateItem"></ng-template>
+</div>

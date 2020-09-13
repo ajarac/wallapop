@@ -1,7 +1,9 @@
 <mat-card>
-    <mat-card-content fxLayout="row" fxLayoutGap="1rem">
-        <img [src]="product.image" alt="" />
-        <div fxLayout="column" class="content" fxLayoutAlign="space-between start" fxLayoutGap="1rem">
+    <mat-card-content fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="1rem">
+        <div fxFlex="33">
+            <img [src]="product.image" alt="" />
+        </div>
+        <div fxFlex fxLayout="column" class="content" fxLayoutAlign="space-between stretch" fxLayoutGap="1rem">
             <div>
                 <div fxLayout="row" fxLayoutAlign="space-between center">
                     <h2>{{ product.title }}</h2>

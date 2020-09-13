@@ -1,7 +1,3 @@
-<div fxLayout="column" fxLayoutGap="1rem">
-    <app-product-list-item
-        *ngFor="let product of products$ | async; trackBy: trackFn"
-        [product]="product"
-        (changeFavorite)="changeFavorite($event)"
-    ></app-product-list-item>
-</div>
+<app-dynamic-list [list]="products$ | async">
+    <app-product-list-item *template="let product" [product]="product" (changeFavorite)="changeFavorite($event)"></app-product-list-item>
+</app-dynamic-list>

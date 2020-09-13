@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { NgForOfContext } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ListConfig } from '@shared/models/list.config';
 
 @Component({
     selector: 'app-dynamic-list',
@@ -8,15 +8,14 @@ import { ListConfig } from '@shared/models/list.config';
     styleUrls: ['./dynamic-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DynamicListComponent<T> implements OnInit {
-    @Input() list: Array<T>;
-    @Input() listConfig: ListConfig<T>;
-
-    dataSource: MatTableDataSource<T>;
-
-    ngOnInit(): void {
-        this.dataSource = new MatTableDataSource<T>(this.list);
+export class DynamicListComponent<T> {
+    @Input() set list(value: Array<T>) {
+        this.dataSource.data = value;
     }
+
+    @ContentChild(TemplateRef) templateItem: TemplateRef<NgForOfContext<T>>;
+
+    dataSource: MatTableDataSource<T> = new MatTableDataSource([]);
 
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
