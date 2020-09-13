@@ -1,0 +1,7 @@
+<mat-form-field [appearance]="appearance">
+    <mat-label>{{ label | translate }}</mat-label>
+    <ng-content></ng-content>
+    <mat-error *ngFor="let error of errors | keyvalue">
+        {{ 'SHARED.forms.errors.' + error.key | translate: error.value }}
+    </mat-error>
+</mat-form-field>
