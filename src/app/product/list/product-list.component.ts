@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProductService } from '@product/application/service/product.service';
 import { Product } from '@product/domain/product';
+import { ListConfig } from '@shared/models/list.config';
 
 @Component({
     selector: 'app-product-list',
@@ -12,6 +13,25 @@ import { Product } from '@product/domain/product';
 })
 export class ProductListComponent {
     products$: Observable<Product[]> = this.productService.list$;
+
+    listConfig: ListConfig<Product> = [
+        {
+            title: 'Title',
+            property: 'title',
+        },
+        {
+            title: 'Description',
+            property: 'description',
+        },
+        {
+            title: 'Price',
+            property: 'price',
+        },
+        {
+            title: 'Email',
+            property: 'email',
+        },
+    ];
 
     constructor(private productService: ProductService) {}
 

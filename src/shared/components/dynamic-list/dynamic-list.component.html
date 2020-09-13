@@ -1,6 +1,18 @@
-<app-custom-field>
-    <input matInput (keyup)="applyFilter($event)" />
-</app-custom-field>
+<div fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between center" fxLayoutGap="5rem">
+    <app-custom-field fxFlex="50" [label]="'shared.filter.input.label' | translate">
+        <input matInput (keyup)="applyFilter($event)" [placeholder]="'shared.filter.input.placeholder' | translate" />
+    </app-custom-field>
+
+    <app-custom-field label="order by">
+        <mat-select (selectionChange)="onChangeSort($event)">
+            <mat-option selected [value]="null">None</mat-option>
+            <mat-option *ngFor="let config of listConfig" [value]="config.property">
+                {{ config.title }}
+            </mat-option>
+        </mat-select>
+    </app-custom-field>
+</div>
+
 <div fxLayout="column" fxLayoutGap="1rem">
-    <ng-template ngFor let-item [ngForOf]="dataSource.filteredData" [ngForTemplate]="templateItem"></ng-template>
+    <ng-template ngFor let-item [ngForOf]="dataSource.filteredData" [ngForTrackBy]="trackFn" [ngForTemplate]="templateItem"></ng-template>
 </div>

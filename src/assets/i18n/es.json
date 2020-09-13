@@ -9,5 +9,13 @@
     "product": {
         "title": "Productos",
         "my_favorites": "Mis Favoritos"
+    },
+    "shared": {
+        "filter": {
+            "input": {
+                "label": "Filtrar",
+                "placeholder": "Introduce para filtrar la lista"
+            }
+        }
     }
 }
