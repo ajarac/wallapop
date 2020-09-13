@@ -1,16 +1,12 @@
-import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '@shared/shared.module';
 
 import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
-    imports: [LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, TranslateModule],
-    declarations: [MainLayoutComponent],
+    imports: [SharedModule],
+    declarations: [MainLayoutComponent, ToolbarComponent],
     exports: [MainLayoutComponent],
 })
 export class SiteModule {}

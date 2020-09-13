@@ -1,5 +1,9 @@
 {
     "site": {
         "title": "Wallapop"
+    },
+    "language": {
+        "en": "Ingles",
+        "es": "Español"
     }
 }

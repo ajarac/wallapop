@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+    <span>{{ 'site.title' | translate }}</span>
+    <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>language</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="changeLang('en')">{{ 'language.en' | translate }}</button>
+            <button mat-menu-item (click)="changeLang('es')">{{ 'language.es' | translate }}</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>
