@@ -17,4 +17,9 @@ export class DynamicListComponent<T> implements OnInit {
     ngOnInit(): void {
         this.dataSource = new MatTableDataSource<T>(this.list);
     }
+
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
 }

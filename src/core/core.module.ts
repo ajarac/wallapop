@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { environment } from '@env/environment';
 
 import { CONFIG_ENVIRONMENT_TOKEN } from './config/config.environment';
-import { CoreTranslateModuel } from './translate/core-translate.module';
+import { CoreStoreModule } from './store/core-store.module';
+import { CoreTranslateModule } from './translate/core-translate.module';
 
 @NgModule({
-    imports: [HttpClientModule, CoreTranslateModuel],
+    imports: [HttpClientModule, CoreTranslateModule, CoreStoreModule],
     providers: [
         {
             provide: CONFIG_ENVIRONMENT_TOKEN,

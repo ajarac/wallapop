@@ -5,5 +5,8 @@
     "language": {
         "en": "English",
         "es": "Spanish"
+    },
+    "product": {
+        "title": "Products"
     }
 }

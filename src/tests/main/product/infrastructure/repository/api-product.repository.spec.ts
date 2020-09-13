@@ -4,7 +4,7 @@ import { CONFIG_ENVIRONMENT_TOKEN } from '@core/config/config.environment';
 import { Environment } from '@env/environment.model';
 import { Product } from '@product/domain/product';
 import { ApiProductRepository } from '@product/infrastructure/repository/api-product.repository';
-import { ApiProductResponse } from '@product/infrastructure/repository/api-product.response';
+import { ApiProduct, ApiProductResponse } from '@product/infrastructure/repository/api-product.response';
 import { ProductMapper } from '@product/infrastructure/repository/product.mapper';
 import { ConfigMother } from '@tests/core/config/config.mother';
 
@@ -37,20 +37,20 @@ describe('[PRODUCT] ApiProductRepository', () => {
     });
 
     it('should return an observable of products list', () => {
-        const listMock: ApiProductResponse[] = ApiProductResponseMother.randomList();
+        const apiProductResponseMock: ApiProductResponse = ApiProductResponseMother.randomList();
 
         repository.getProducts().subscribe((products: Product[]) => {
-            const listProductDomain: Product[] = listMock.map((apiProduct: ApiProductResponse, index: number) =>
+            const listProductDomain: Product[] = apiProductResponseMock.items.map((apiProduct: ApiProduct, index: number) =>
                 ProductMapper.toDomain(apiProduct, products[index].id),
             );
             expect(Array.isArray(products)).toBeTruthy();
-            expect(products.length).toBe(listMock.length);
+            expect(products.length).toBe(apiProductResponseMock.items.length);
 
             expect(products).toEqual(listProductDomain);
         });
 
         const req = httpMock.expectOne(`${configMock.api}items.json`);
         expect(req.request.method).toBe('GET');
-        req.flush(listMock);
+        req.flush({ items: apiProductResponseMock });
     });
 });

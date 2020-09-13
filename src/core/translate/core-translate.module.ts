@@ -20,4 +20,4 @@ export function createTranslateLoader(http: HttpClient) {
         }),
     ],
 })
-export class CoreTranslateModuel {}
+export class CoreTranslateModule {}

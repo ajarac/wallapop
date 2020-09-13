@@ -1,13 +1,13 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Product } from '@product/domain/product';
 
-import { ApiProductResponse } from './api-product.response';
+import { ApiProduct } from './api-product.response';
 
 export class ProductMapper {
-    static toDomain(apiProduct: ApiProductResponse, id: string = uuid()): Product {
+    static toDomain(apiProduct: ApiProduct, id?: string): Product {
         return {
-            id,
+            id: id || uuidv4(),
             title: apiProduct.title,
             description: apiProduct.description,
             price: apiProduct.price,
