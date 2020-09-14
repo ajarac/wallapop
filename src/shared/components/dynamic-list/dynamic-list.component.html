@@ -6,8 +6,8 @@
     <app-custom-field [label]="'shared.filter.selector.label' | translate">
         <mat-select (selectionChange)="onChangeSort($event)">
             <mat-option selected [value]="null">{{ 'shared.filter.selector.none' | translate }}</mat-option>
-            <mat-option *ngFor="let config of listConfig" [value]="config.property">
-                {{ config.title }}
+            <mat-option *ngFor="let option of optionsOrderList" [value]="option">
+                <div fxLayout="row" fxLayoutAlign="space-between center">{{ option.title }} - {{ option.direction }}</div>
             </mat-option>
         </mat-select>
     </app-custom-field>
