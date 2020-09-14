@@ -4,11 +4,12 @@
             <img [src]="product.image" alt="" />
         </div>
         <div fxFlex fxLayout="column" class="content" fxLayoutAlign="space-between stretch" fxLayoutGap="1rem">
-            <div>
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1rem">
                 <div fxLayout="row" fxLayoutAlign="space-between center">
                     <h2>{{ product.title }}</h2>
                     <span class="price">{{ product.price }} €</span>
                 </div>
+                <span>{{ product.email }}</span>
                 <p>{{ product.description }}</p>
             </div>
             <button mat-icon-button [color]="product.favorite ? 'accent' : 'none'" (click)="toggleFavorite()">
