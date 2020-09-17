@@ -24,7 +24,6 @@ export class ProductFeatureFavoriteListComponent {
     constructor(private productService: ProductService) {}
 
     changeFavorite(product: Product): void {
-        console.log('changeFavorite', product);
         this.productService.changeFavorite(product, false);
     }
 

@@ -60,7 +60,6 @@ describe('ToolbarComponent', () => {
         translateServiceMock.setDefaultLang.and.callThrough();
         button.click();
 
-        console.log(dom.parentNode.querySelector('#btn-lang-' + lang).nativeElement);
         dom.parentNode.querySelector('#btn-lang-' + lang).click();
 
         expect(translateServiceMock.setDefaultLang).toHaveBeenCalledWith(lang);
