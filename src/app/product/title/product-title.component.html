@@ -1,9 +1,9 @@
 <mat-card>
     <mat-card-title fxLayout="row" fxLayoutAlign="space-between">
         <span fxLayout="column" fxLayoutAlign="center center">{{ 'product.title' | translate }}</span>
-        <button mat-raised-button color="accent" (click)="clickFavorite()">
+        <button mat-raised-button color="accent" (click)="clickFavorite()" id="btn-open-fav">
             <mat-icon>favorite</mat-icon>
-            <span>{{ 'product.my_favorites' | translate }} ({{ countFavorites$ | async }})</span>
+            <span id="count-product-fav">{{ 'product.my_favorites' | translate }} ({{ countFavorites$ | async }})</span>
         </button>
     </mat-card-title>
 </mat-card>

@@ -16,7 +16,6 @@ class TranslatePipe implements PipeTransform {
 
 describe('ToolbarComponent', () => {
     let fixture: ComponentFixture<ToolbarComponent>;
-    let component: ToolbarComponent;
     let dom;
     let translateServiceMock;
     let button;
@@ -39,7 +38,6 @@ describe('ToolbarComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ToolbarComponent);
         fixture.autoDetectChanges(true);
-        component = fixture.debugElement.componentInstance;
         dom = fixture.nativeElement;
         button = dom.querySelector('#btn-lang');
     });

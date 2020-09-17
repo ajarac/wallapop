@@ -63,7 +63,7 @@ describe('[PRODUCT] Product State', () => {
 
     it('should change favorite product by action', () => {
         const length = 10;
-        const mockList: Product[] = ProductListMother.random(length);
+        const mockList: Product[] = ProductListMother.random(length, { favorite: false });
         productRepositoryMock.getProducts.and.returnValue(of(mockList));
         store.dispatch(new LoadProductsAction());
         const products: Product[] = store.selectSnapshot(ProductSelector.list);

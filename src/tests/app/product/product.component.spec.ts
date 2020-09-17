@@ -9,21 +9,19 @@ import { ProductComponent } from '@app/product/product.component';
     selector: 'app-product-title',
     template: '<div></div>',
 })
-class ProductTitleStub {
+class ProductTitleStubComponent {
     @Output() favorite: EventEmitter<void> = new EventEmitter<void>();
 }
 
 describe('Product Component', () => {
     let fixture: ComponentFixture<ProductComponent>;
-    let component: ProductComponent;
-    let productTitleStub: ProductTitleStub;
-    let dom;
+    let productTitleStub: ProductTitleStubComponent;
     let matDialogMock;
     beforeEach(async () => {
         matDialogMock = jasmine.createSpyObj('matDialogService', ['open']);
 
         TestBed.configureTestingModule({
-            declarations: [ProductComponent, ProductTitleStub],
+            declarations: [ProductComponent, ProductTitleStubComponent],
             providers: [
                 {
                     provide: MatDialog,
@@ -36,9 +34,7 @@ describe('Product Component', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ProductComponent);
         fixture.autoDetectChanges(true);
-        component = fixture.debugElement.componentInstance;
-        dom = fixture.nativeElement;
-        productTitleStub = fixture.debugElement.query(By.directive(ProductTitleStub)).componentInstance;
+        productTitleStub = fixture.debugElement.query(By.directive(ProductTitleStubComponent)).componentInstance;
     });
 
     it('should open dialog when emit product title', () => {
