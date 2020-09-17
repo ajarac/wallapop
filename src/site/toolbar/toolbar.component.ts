@@ -8,6 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
+    langs: string[] = ['en', 'es'];
+
     constructor(private translateService: TranslateService) {}
 
     changeLang(lang: string): void {

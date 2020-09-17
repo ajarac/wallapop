@@ -1,12 +1,13 @@
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
     <span>{{ 'site.title' | translate }}</span>
     <div>
-        <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
+        <button mat-icon-button color="accent" id="btn-lang" [matMenuTriggerFor]="menu">
             <mat-icon>language</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="changeLang('en')">{{ 'language.en' | translate }}</button>
-            <button mat-menu-item (click)="changeLang('es')">{{ 'language.es' | translate }}</button>
+            <button *ngFor="let lang of langs" mat-menu-item [id]="'btn-lang-' + lang" (click)="changeLang(lang)">
+                {{ 'language.' + lang | translate }}
+            </button>
         </mat-menu>
     </div>
 </mat-toolbar>

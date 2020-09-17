@@ -68,6 +68,6 @@ describe('[PRODUCT] ApiProductRepository', () => {
 
         const req = httpMock.expectOne(`${configMock.api}items.json`);
         expect(req.request.method).toBe('GET');
-        req.flush({ items: apiProductResponseMock });
+        req.flush(apiProductResponseMock);
     });
 });
