@@ -83,7 +83,7 @@
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": ["src/styles.sass"],
+                        "styles": ["src/styles.scss"],
                         "scripts": []
                     }
                 },
@@ -145,9 +145,7 @@
                     "options": {
                         "browserTarget": "wallapop:build:production",
                         "serverTarget": "wallapop:server:production",
-                        "routes": [
-                            "/"
-                        ]
+                        "routes": ["/"]
                     },
                     "configurations": {
                         "production": {}

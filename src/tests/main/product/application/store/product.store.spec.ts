@@ -1,12 +1,12 @@
+import { random } from 'faker';
 import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { LoadProductsAction } from '@product/application/store/product.action';
+import { ChangeFavoriteProductAction } from '@product/application/store/product.action';
 import { ProductSelector } from '@product/application/store/product.selector';
-import { ProductState } from '@product/application/store/product.state';
-import { IProductState } from '@product/application/store/product.state';
+import { IProductState, ProductState } from '@product/application/store/product.state';
 import { Product } from '@product/domain/product';
 import { PRODUCT_REPOSITORY } from '@product/domain/product.repository';
 
@@ -34,7 +34,7 @@ describe('[PRODUCT] Product State', () => {
     it('should be init state', () => {
         const state: IProductState = store.selectSnapshot(ProductState);
 
-        expect(state).toEqual({ products: {}, loading: false });
+        expect(state).toEqual({ products: {} });
     });
 
     it('should load products by repository', () => {
@@ -61,17 +61,18 @@ describe('[PRODUCT] Product State', () => {
         expect(products).toEqual(mockDict);
     });
 
-    it('should set loading when is doing get product', fakeAsync(() => {
-        const mockList: Product[] = ProductListMother.random();
-        productRepositoryMock.getProducts.and.returnValue(of(mockList).pipe(delay(1000)));
-
+    it('should change favorite product by action', () => {
+        const length = 10;
+        const mockList: Product[] = ProductListMother.random(length);
+        productRepositoryMock.getProducts.and.returnValue(of(mockList));
         store.dispatch(new LoadProductsAction());
-        let loading: boolean;
-        loading = store.selectSnapshot(ProductSelector.isLoading);
-        expect(loading).toBeTrue();
+        const products: Product[] = store.selectSnapshot(ProductSelector.list);
+        const product: Product = random.arrayElement(products);
 
-        tick(1000);
-        loading = store.selectSnapshot(ProductSelector.isLoading);
-        expect(loading).toBeFalse();
-    }));
+        store.dispatch(new ChangeFavoriteProductAction(product, true));
+
+        const favoriteProducts: Product[] = store.selectSnapshot(ProductSelector.listFavorite);
+        const favoriteProduct: Product = favoriteProducts.find(({ id }: Product) => id === product.id);
+        expect(favoriteProduct).toEqual({ ...product, favorite: true });
+    });
 });

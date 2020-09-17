@@ -36,6 +36,23 @@ describe('[PRODUCT] ApiProductRepository', () => {
         httpMock.verify();
     });
 
+    it('should adapter api response to domain Mapper', () => {
+        const apiResponse: ApiProduct = ApiProductResponseMother.random();
+        const id = 'test-id';
+
+        const product: Product = ProductMapper.toDomain(apiResponse, id);
+
+        expect(product).toEqual({
+            title: apiResponse.title,
+            description: apiResponse.description,
+            price: apiResponse.price,
+            email: apiResponse.email,
+            image: apiResponse.image,
+            id: 'test-id',
+            favorite: false,
+        });
+    });
+
     it('should return an observable of products list', () => {
         const apiProductResponseMock: ApiProductResponse = ApiProductResponseMother.randomList();
 

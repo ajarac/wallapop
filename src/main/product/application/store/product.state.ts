@@ -12,14 +12,12 @@ import { ChangeFavoriteProductAction, LoadProductsAction, ProductsLoadedAction }
 
 export interface IProductState {
     products: Dictionary<Product>;
-    loading: boolean;
 }
 
 @State<IProductState>({
     name: 'product',
     defaults: {
         products: {},
-        loading: false,
     },
 })
 @Injectable()
@@ -27,12 +25,8 @@ export class ProductState {
     constructor(@Inject(PRODUCT_REPOSITORY) private repository: ProductRepository) {}
 
     @Action(LoadProductsAction)
-    loadProducts({ patchState, dispatch }: StateContext<IProductState>): Observable<Product[]> {
-        patchState({ loading: true });
-        return this.repository.getProducts().pipe(
-            tap((products: Product[]) => dispatch(new ProductsLoadedAction(products))),
-            finalize(() => patchState({ loading: false })),
-        );
+    loadProducts({ dispatch }: StateContext<IProductState>): Observable<Product[]> {
+        return this.repository.getProducts().pipe(tap((products: Product[]) => dispatch(new ProductsLoadedAction(products))));
     }
 
     @Action(ProductsLoadedAction)

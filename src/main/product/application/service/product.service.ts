@@ -17,10 +17,6 @@ export class ProductService {
         return this.store.select(ProductSelector.listFavorite);
     }
 
-    get isLoading$(): Observable<boolean> {
-        return this.store.select(ProductSelector.isLoading);
-    }
-
     constructor(private store: Store) {}
 
     loadProducts(): void {
